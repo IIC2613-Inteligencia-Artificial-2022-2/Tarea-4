@@ -10,7 +10,7 @@ MAX_EXPLORATION_RATE = 1
 MIN_EXPLORATION_RATE = 0.0002
 EXPLORATION_DECAY_RATE = 0.00015
 
-VISUALIZATION = False
+VISUALIZATION = True
 
 class Agent:
     # Esta clase posee al agente y define sus comportamientos.
@@ -28,9 +28,6 @@ class Agent:
 
         # Inicializamos los juegos realizados por el agente en 0.
         self.n_games = 0
-        
-        # Inicializamos el exploration rate.
-        self.EXPLORATION_RATE = MIN_EXPLORATION_RATE + (MAX_EXPLORATION_RATE - MIN_EXPLORATION_RATE) * np.exp(-EXPLORATION_DECAY_RATE*self.n_games)
 
     def get_state(self, game):
         # Este método consulta al juego por el estado del agente y lo retorna como una tupla.

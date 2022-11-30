@@ -2,6 +2,7 @@ from tkinter import W
 import pygame
 import random
 import math
+import os
 
 pygame.init()
 
@@ -23,13 +24,15 @@ WALL_VEL = 3
 
 GRAVITY = 0.125
 
-SCORE_FONT = pygame.font.Font("resources/fb-font.ttf", 80)
+current_path = os.path.dirname(os.path.realpath(__file__))
 
-SPRITE = pygame.image.load("resources/sprite.png")
-BOT_PIPE = pygame.image.load("resources/bot_pipe.png")
-TOP_PIPE = pygame.image.load("resources/top_pipe.png")
-BACKGROUND = pygame.image.load("resources/background.png")
-FLOOR = pygame.image.load("resources/floor.png")
+SCORE_FONT = pygame.font.Font(os.path.join(current_path, "resources/fb-font.ttf"), 80)
+
+SPRITE = pygame.image.load(os.path.join(current_path, "resources/sprite.png"))
+BOT_PIPE = pygame.image.load(os.path.join(current_path, "resources/bot_pipe.png"))
+TOP_PIPE = pygame.image.load(os.path.join(current_path, "resources/top_pipe.png"))
+BACKGROUND = pygame.image.load(os.path.join(current_path, "resources/background.png"))
+FLOOR = pygame.image.load(os.path.join(current_path, "resources/floor.png"))
 
 class Bird:
     COLOR = WHITE
@@ -84,7 +87,7 @@ class Wall:
         self.hole_size = CHARACTER_RADIUS * 8
         self.new_hole = -1
         self.hole = HEIGHT//2 - int(random.uniform(-0.6, 0.6) * HEIGHT//2)
-        self.score = 35
+        self.score = 0
 
     def draw(self, win):
         top_height = self.hole - self.hole_size//2
