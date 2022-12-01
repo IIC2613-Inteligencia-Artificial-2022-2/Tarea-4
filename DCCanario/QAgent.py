@@ -69,8 +69,6 @@ class Agent:
         state.append(int(delta_y_next))
         state.append(sense_next)
 
-        print(state)
-
         return tuple(state)
 
     def get_action(self, state):
