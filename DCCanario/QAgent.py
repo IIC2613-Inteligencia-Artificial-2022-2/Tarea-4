@@ -58,7 +58,8 @@ class Agent:
         sense_next = 0
 
         # Calculamos la distancia al agujero de la tubería que vendrá después de la actual
-        delta_y_next = game.character.y - game.current_wall.hole
+        next_wall = game.walls[1] if game.current_wall == game.walls[0] else game.walls[0]
+        delta_y_next = game.character.y - next_wall.hole
         if delta_y_next < 0:
             # Sense nos indica si el agujero se encontrará encima o debajo del agente
             sense_next = 1
@@ -67,6 +68,8 @@ class Agent:
             delta_y_next = 27
         state.append(int(delta_y_next))
         state.append(sense_next)
+
+        print(state)
 
         return tuple(state)
 
